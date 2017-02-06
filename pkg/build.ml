@@ -5,7 +5,6 @@
 #use "topfind"
 #require "str"
 
-let native = Env.bool "native"
 let lwt = Env.bool "lwt"
 let async = Env.bool "async"
 let async_ssl = Env.bool "async_ssl"
