@@ -5,6 +5,7 @@
 #use "topfind"
 #require "str"
 
+let native = Env.bool "native"
 let lwt = Env.bool "lwt"
 let async = Env.bool "async"
 let async_ssl = Env.bool "async_ssl"
@@ -86,6 +87,7 @@ let () =
     Pkg.lib ~exts:Exts.(".cmx" :: library) "lib/websocket";
     Pkg.lib ~exts:Exts.module_library "lib/rng";
     Pkg.lib ~cond:lwt ~exts:Exts.module_library "lib/websocket_lwt";
+    Pkg.lib ~cond:lwt ~exts:Exts.module_library "lib/websocket_cohttp_lwt";
     Pkg.lib ~cond:async ~exts:Exts.module_library "lib/websocket_async";
     Pkg.bin ~cond:(test && lwt) ~auto:true "tests/wscat";
     Pkg.bin ~cond:(test && async && async_ssl) ~auto:true "tests/wscat_async";
